@@ -1,25 +1,29 @@
+const mainForm = document.getElementById('mainForm');
+const mainInput = document.getElementById('mainInput');
+
 blockchain = [];
 
 document.addEventListener('keypress', function onKeyPress(event) {
-    function getLastBlockchainValue() {}
-
-    function getUserChoice() {
-      let userInput = prompt('Bitte gib etwas ein:');
-      return userInput;
-    }
-    
-    let waitingForInput = true;
-    
-    while (waitingForInput) {
-      console.log('Please choose');
-      console.log('q: Quit');
-    
-      userChoice = getUserChoice();
-    
-      if (userChoice === 'q') {
-        waitingForInput = false;
+    if (event.key === 'Enter') {
+      document.removeEventListener('keypress', onKeyPress); // Entferne den Listener, damit die Schleife nicht erneut startet
+      
+      mainForm.style.display.block;
+  
+      let waitingForInput = true;
+      let userChoice;
+  
+      while (waitingForInput) {
+        console.log('Please choose');
+        console.log('q: Quit');
+  
+        // userChoice = prompt('Bitte gib etwas ein:');
+  
+        if (userChoice === 'q') {
+          waitingForInput = false;
+        }
       }
+  
+      console.log('User left');
     }
-
-    console.log('User left');
-});
+  });
+  
