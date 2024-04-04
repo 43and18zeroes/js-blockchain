@@ -1,15 +1,23 @@
 blockchain = [];
 
 let waitingForInput = true;
-let userChoice;
+
+function getTransanctionValue() {
+  const userInput = prompt('Your transaction amount please:');
+  return userInput;
+}
 
 function initUserDialog() {
   while (waitingForInput) {
     console.log('Please choose');
     console.log('q: Quit');
 
-    userChoice = prompt('Bitte gib etwas ein:');
+    const userChoice = prompt('Please choose');
 
+    if (userChoice === '1') {
+      const txAmount = getTransanctionValue();
+      console.log(txAmount);
+    }
     if (userChoice === 'q') {
       waitingForInput = false;
     }
