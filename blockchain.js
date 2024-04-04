@@ -1,13 +1,25 @@
-blockchain = [];
+let waitingForInput
 
-let waitingForInput = true;
+function addEnterEventlistener() {
+  document.addEventListener('keyup', function onKeyPress(event) {
+    if (event.key === 'Enter') {
+      document.removeEventListener('keyup', onKeyPress);
+      waitingForInput = true;
+      initUserDialog();
+    }
+  });
+}
+
+addEnterEventlistener();
+
+blockchain = [];
 
 function getTransanctionValue() {
   let userInput;
   do {
     userInput = prompt('Your transaction amount please:');
     if (isNaN(userInput) || userInput.trim() === '') {
-      console.log("Please enter a valid number.");
+      console.log('Please enter a valid number.');
     }
   } while (isNaN(userInput) || userInput.trim() === '');
   return Number(userInput);
@@ -31,12 +43,5 @@ function initUserDialog() {
   }
 
   console.log('User left');
+  addEnterEventlistener();
 }
-
-
-document.addEventListener('keyup', function onKeyPress(event) {
-  if (event.key === 'Enter') {
-    document.removeEventListener('keyup', onKeyPress);
-    initUserDialog();
-  }
-});
