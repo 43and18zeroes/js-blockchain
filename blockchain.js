@@ -31,30 +31,25 @@ function displayUserOptions() {
   console.log('q: Quit');
 }
 
+function handleUserSelection(userChoice) {
+  switch (userChoice) {
+    case '1':
+      const txAmount = getTransanctionValue();
+      console.log(txAmount);
+      break;
+    case 'q':
+      waitingForInput = false;
+      break;
+    default:
+      console.log('Invalid option, please choose again.');
+  }
+}
+
 function initUserDialog() {
   while (waitingForInput) {
     displayUserOptions();
     const userChoice = prompt('Please choose');
-
-    // if (userChoice === '1') {
-    //   const txAmount = getTransanctionValue();
-    //   console.log(txAmount);
-    // }
-    // if (userChoice === 'q') {
-    //   waitingForInput = false;
-    // }
-
-    switch (userChoice) {
-      case '1':
-        const txAmount = getTransanctionValue();
-        console.log(txAmount);
-        break;
-      case 'q':
-        waitingForInput = false;
-        break;
-      default:
-        console.log('Invalid option, please choose again.');
-    }
+    handleUserSelection(userChoice);
   }
 
   console.log('User left');
