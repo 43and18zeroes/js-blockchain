@@ -1,4 +1,20 @@
+blockchain = [];
 let waitingForInput;
+
+function getLastBlockchainValue() {
+  console.log('blockchain.length', blockchain.length);
+  if (blockchain.length) {
+    return null;
+  }
+  return blockchain[-1];
+}
+
+function addTransaction(txAmount, lastTransaction = [1]) {
+  if (lastTransaction === null) {
+    lastTransaction = [1];
+  }
+  blockchain.push([lastTransaction, txAmount]);
+}
 
 function initiateEnterKeyListener() {
   document.addEventListener('keyup', function onKeyPress(event) {
@@ -9,10 +25,6 @@ function initiateEnterKeyListener() {
     }
   });
 }
-
-initiateEnterKeyListener();
-
-blockchain = [];
 
 function getTransanctionValue() {
   let userInput;
@@ -36,6 +48,7 @@ function handleUserSelection(userChoice) {
     case '1':
       const txAmount = getTransanctionValue();
       console.log(txAmount);
+      addTransaction(txAmount, getLastBlockchainValue());
       break;
     case 'q':
       waitingForInput = false;
@@ -55,3 +68,5 @@ function startUserInteractionLoop() {
   console.log('User left');
   initiateEnterKeyListener();
 }
+
+initiateEnterKeyListener();
