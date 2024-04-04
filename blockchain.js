@@ -3,9 +3,10 @@ let waitingForInput;
 
 function getLastBlockchainValue() {
   console.log('blockchain.length', blockchain.length);
-  if (blockchain.length) {
+  if (blockchain.length < 1) {
     return null;
   }
+  console.log('blockchain[-1]', blockchain[-1]);
   return blockchain[-1];
 }
 
@@ -13,7 +14,9 @@ function addTransaction(txAmount, lastTransaction = [1]) {
   if (lastTransaction === null) {
     lastTransaction = [1];
   }
+  console.log('blockchain before push', blockchain);
   blockchain.push([lastTransaction, txAmount]);
+  console.log('blockchain after push', blockchain);
 }
 
 function initiateEnterKeyListener() {
