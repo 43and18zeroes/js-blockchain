@@ -3,11 +3,6 @@ blockchain = [];
 let waitingForInput = true;
 
 function getTransanctionValue() {
-  const userInput = prompt('Your transaction amount please:');
-  return userInput;
-}
-
-function getTransanctionValue() {
   let userInput;
   do {
     userInput = prompt('Your transaction amount please:');
@@ -21,6 +16,7 @@ function getTransanctionValue() {
 function initUserDialog() {
   while (waitingForInput) {
     console.log('Please choose');
+    console.log('1: Add a new transaction value');
     console.log('q: Quit');
 
     const userChoice = prompt('Please choose');
