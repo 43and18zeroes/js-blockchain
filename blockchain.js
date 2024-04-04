@@ -38,9 +38,9 @@ function initUserDialog() {
 }
 
 
-document.addEventListener('keypress', function onKeyPress(event) {
+document.addEventListener('keyup', function onKeyPress(event) {
   if (event.key === 'Enter') {
-    document.removeEventListener('keypress', onKeyPress); // Entferne den Listener, damit die Schleife nicht erneut startet
+    document.removeEventListener('keyup', onKeyPress);
     initUserDialog();
   }
 });
