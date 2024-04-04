@@ -1,16 +1,16 @@
 let waitingForInput;
 
-function addEnterEventlistener() {
+function initiateEnterKeyListener() {
   document.addEventListener('keyup', function onKeyPress(event) {
     if (event.key === 'Enter') {
       document.removeEventListener('keyup', onKeyPress);
       waitingForInput = true;
-      initUserDialog();
+      startUserInteractionLoop();
     }
   });
 }
 
-addEnterEventlistener();
+initiateEnterKeyListener();
 
 blockchain = [];
 
@@ -25,7 +25,7 @@ function getTransanctionValue() {
   return Number(userInput);
 }
 
-function displayUserOptions() {
+function showMenuOptions() {
   console.log('Please choose');
   console.log('1: Add a new transaction value');
   console.log('q: Quit');
@@ -45,13 +45,13 @@ function handleUserSelection(userChoice) {
   }
 }
 
-function initUserDialog() {
+function startUserInteractionLoop() {
   while (waitingForInput) {
-    displayUserOptions();
+    showMenuOptions();
     const userChoice = prompt('Please choose');
     handleUserSelection(userChoice);
   }
 
   console.log('User left');
-  addEnterEventlistener();
+  initiateEnterKeyListener();
 }
