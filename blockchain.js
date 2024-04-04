@@ -37,9 +37,17 @@ function getTransanctionValue() {
   return Number(userInput);
 }
 
+function printBlockchainElements() {
+  for (let index = 0; index < blockchain.length; index++) {
+    console.log(blockchain[index]);
+  }
+  console.log('--------------------');
+}
+
 function showMenuOptions() {
   console.log('Please choose');
   console.log('1: Add a new transaction value');
+  console.log('2: Output the blockchain blocks');
   console.log('q: Quit');
 }
 
@@ -50,6 +58,8 @@ function handleUserSelection(userChoice) {
       console.log(txAmount);
       addTransaction(txAmount, getLastBlockchainValue());
       break;
+    case '2':
+      printBlockchainElements();
     case 'q':
       waitingForInput = false;
       break;
